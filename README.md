@@ -79,6 +79,12 @@ The repo is also a valid Claude Code plugin (`.claude-plugin/plugin.json`). Add 
 - It is still Claude. This is *context* and *incentive* independence, not independence of model weights — a mistake rooted in the model's training can be shared by the auditor. For the highest-stakes claims, a human or a different model is the right backstop.
 - It audits the **delivered text**, not intent. If the answer is right but poorly worded, expect a `MINOR` note, not a pass-with-praise.
 
+## Use it on ChatGPT / Gemini / any model
+
+The `/audit` command and transcript extraction are Claude Code-specific, but the auditor's **judgment** is not. [`prompts/auditor-portable.md`](prompts/auditor-portable.md) is the same rubric with all the plumbing stripped out — paste it into a ChatGPT *Custom GPT*, a Gemini *Gem*, or the top of any fresh chat, then paste the answer to audit.
+
+Running the auditor on a **different model** than wrote the answer (audit a ChatGPT answer with Gemini, or vice versa) even buys you weight-level independence — the one thing the Claude-on-Claude version can't give you.
+
 ## Customize
 
 - **Sharper or softer:** edit the *Operating principles* and *Verdict rule* in `agents/independent-auditor.md`.
