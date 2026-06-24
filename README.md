@@ -4,6 +4,22 @@ An **independent third-party reviewer** that lives in every Claude Code session.
 
 It exists because the model that wrote an answer is the worst judge of it: it shares the answer's blind spots and has a sunk cost in being right. This gives you a skeptic with fresh eyes instead.
 
+## Three forms — pick by where you work
+
+The auditor's *judgment* (the four-dimension rubric) is identical everywhere; only the *plumbing* and the degree of independence differ.
+
+| Form | Where | Independence | Convenience |
+|---|---|---|---|
+| **`/audit` command** | Claude Code | ⭐⭐⭐ True separate-subagent context — can't see the original reasoning | One key; auto-extracts the previous answer |
+| **claude.ai chat Skill** | claude.ai web / app | ⭐⭐ Same context, same model — adversarial *self*-review with tool-backed verification, not a true third party | One trigger, but reviews within the same conversation |
+| **Portable prompt** | ChatGPT / Gemini / any chat | ⭐⭐⭐ Weight-level independence *when run on a different model* than wrote the answer | Manual paste |
+
+- **Claude Code** → [Install](#install-global--works-in-every-session) and run `/audit`. (Strongest independence + fully automatic.)
+- **claude.ai chat** → upload the [Skill](#use-it-as-a-claudeai-chat-skill).
+- **ChatGPT / Gemini / elsewhere** → paste the [portable prompt](prompts/auditor-portable.md), ideally on a model *other* than the author.
+
+> Why independence varies: a *separate subagent* (Claude Code) has no sunk cost and never sees the original chain-of-thought. A *chat skill* runs as the same model in the same conversation, so it's honest self-scrutiny, not a third party. A *different model* (portable prompt) is the only form that escapes shared training blind spots.
+
 ```
 You ask Claude something  →  Claude answers  →  you run /audit
         │
