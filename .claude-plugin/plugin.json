@@ -1,0 +1,21 @@
+{
+  "name": "independent-auditor",
+  "displayName": "Independent Auditor",
+  "description": "An independent third-party agent that audits Claude's answers for factual/computational correctness, logical consistency, objectivity, and completeness — from an isolated context with real verification tools.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Eddie",
+    "email": "eddiedonghy@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "audit",
+    "fact-check",
+    "review",
+    "verification",
+    "objectivity",
+    "subagent"
+  ],
+  "agents": ["agents/independent-auditor.md"],
+  "commands": ["commands/audit.md"]
+}
