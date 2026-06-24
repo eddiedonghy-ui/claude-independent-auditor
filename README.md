@@ -106,6 +106,8 @@ Running the auditor on a **different model** than wrote the answer (audit a Chat
 claude.ai supports user-uploaded **Skills**, so you can get a convenient trigger in the chat app too (no re-pasting the prompt):
 
 1. Download [`dist/independent-auditor-skill.zip`](dist/independent-auditor-skill.zip) (or zip the `skills/independent-auditor/` folder yourself — the folder must sit at the zip root).
+
+   > **Windows note:** don't rebuild the zip with PowerShell's `Compress-Archive` — it writes entry paths with backslashes and claude.ai rejects them with *"Zip file contains path with invalid characters."* Use the prebuilt zip, or run [`scripts/build-skill-zip.ps1`](scripts/build-skill-zip.ps1), which forces forward slashes. (macOS/Linux `zip` is fine.)
 2. In claude.ai: **Settings → Customize → Skills → Upload**, pick the zip. (Requires code execution enabled.)
 3. In any chat, ask Claude to "audit that" / "fact-check the last answer" and the skill activates.
 
