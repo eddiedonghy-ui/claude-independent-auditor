@@ -85,6 +85,16 @@ The `/audit` command and transcript extraction are Claude Code-specific, but the
 
 Running the auditor on a **different model** than wrote the answer (audit a ChatGPT answer with Gemini, or vice versa) even buys you weight-level independence — the one thing the Claude-on-Claude version can't give you.
 
+## Use it as a claude.ai chat Skill
+
+claude.ai supports user-uploaded **Skills**, so you can get a convenient trigger in the chat app too (no re-pasting the prompt):
+
+1. Download [`dist/independent-auditor-skill.zip`](dist/independent-auditor-skill.zip) (or zip the `skills/independent-auditor/` folder yourself — the folder must sit at the zip root).
+2. In claude.ai: **Settings → Customize → Skills → Upload**, pick the zip. (Requires code execution enabled.)
+3. In any chat, ask Claude to "audit that" / "fact-check the last answer" and the skill activates.
+
+> **Independence caveat.** A chat skill runs in the **same conversation and same model instance** as the answer it reviews — there is no separate subagent context like the Claude Code `/audit` command gets. So this is rigorous *adversarial self-review with tool-backed verification* (it recomputes with code and checks facts via search), not a truly independent third party. For real independence, use the Claude Code version (separate subagent context) or run the [portable prompt](prompts/auditor-portable.md) on a **different model**.
+
 ## Customize
 
 - **Sharper or softer:** edit the *Operating principles* and *Verdict rule* in `agents/independent-auditor.md`.
